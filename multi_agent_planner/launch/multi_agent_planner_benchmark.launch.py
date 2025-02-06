@@ -3,7 +3,7 @@ from launch_ros.actions import Node
 import os
 import math
 from ament_index_python.packages import get_package_share_directory
-
+import pickle
 
 def generate_launch_description():
     # get config file
@@ -23,24 +23,32 @@ def generate_launch_description():
 
     # define params
     n_rob = 8
-    dist_between_rob = 0.25
+    dist_between_rob = 0.5
     x_pos = -1.0
     z_pos = 0.5
-    dist_start_goal = 15.0
-    voxel_grid_range = [2.0, 2.0, 0.5]
+    dist_start_goal = 25.0
+    voxel_grid_range = [20.0, 20.0, 0.5]
     use_mapping_util = True
-    free_grid = False
+    free_grid = True
     save_stats = True
 
     # calculate equidistant start and goal positions on the same line
     start_positions = []
     goal_positions = []
-    start_positions.append((x_pos, 1.0, z_pos, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0))
+    start_positions.append((x_pos, 0.5, z_pos, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0))
     goal_positions.append((x_pos + dist_start_goal, 5.0, z_pos))
     for i in range(n_rob-1):
         y = start_positions[0][1] + (i+1)*dist_between_rob
         start_positions.append((x_pos,  y, z_pos, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0))
         goal_positions.append((x_pos + dist_start_goal, y, z_pos))
+    
+    with open("src/multi_agent_pkgs/multi_agent_planner/launch/run_6_goals", "rb") as fp:   # Unpickling
+        goal_positions = pickle.load(fp)
+        
+    with open("src/multi_agent_pkgs/multi_agent_planner/launch/run_6_start", "rb") as fp:   # Unpickling
+        start_positions = pickle.load(fp)
+        
+    print(start_positions)
 
     # create mapping nodes
     if use_mapping_util:
