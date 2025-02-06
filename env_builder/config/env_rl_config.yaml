@@ -1,0 +1,55 @@
+env_builder_node: 
+  ros__parameters:
+    origin_grid: [0.0, 0.0, 0.0] # origin of the voxel grid
+    dimension_grid: [100.0, 30.0, 15.0] # dimensions in meters
+    vox_size: 0.1 # voxel size of the grid
+    free_grid: true # if true the grid is initialized to free instead of unknown
+    multi_obst_size: true # if false, use size_obst as a common size for all obstacles; otherwise use size_obst_multi to define the size of each obstacle
+    multi_obst_position: true # if false, generate positions randomly using normal distribution, if true use position_obst_multi to define the position of each obstacle
+    range_obst: [100.0, 100.0, 0.0] # area on the map where to generate obstacles, always positive numbers to move it around, use the origin_obst variable
+    origin_obst: [0.0, 0.0, 0.0] # origin of the area where we generate the obstacles
+    size_obst: [0.1, 0.1, 10.0] # height x width x length
+    rand_seed: 10 #seed for the random generation of the obstacles
+    n_obst: 180 # 360, 315, 270, 225, 180, 135, 90, number of obstacles (only used if we want to use random generation, otherwise the number of obstacles is inferred from position_obst_vec)
+    rand_seed: 13 #seed for the random generation of the obstacles
+    size_obst_vec: [0.38, 0.38, 15.0, 0.32, 0.32, 15.0, 0.21, 0.21, 15.0, 0.28, 0.28,
+      15.0, 0.31, 0.31, 15.0, 0.29, 0.29, 15.0, 0.37, 0.37, 15.0, 0.33, 0.33, 15.0,
+      0.2, 0.2, 15.0, 0.27, 0.27, 15.0, 0.36, 0.36, 15.0, 0.4, 0.4, 15.0, 0.22, 0.22,
+      15.0, 0.34, 0.34, 15.0, 0.25, 0.25, 15.0, 0.32, 0.32, 15.0, 0.23, 0.23, 15.0,
+      0.32, 0.32, 15.0, 0.36, 0.36, 15.0, 0.27, 0.27, 15.0, 0.38, 0.38, 15.0, 0.22,
+      0.22, 15.0, 0.31, 0.31, 15.0, 0.34, 0.34, 15.0, 0.35, 0.35, 15.0, 0.31, 0.31,
+      15.0, 0.3, 0.3, 15.0, 0.35, 0.35, 15.0, 0.33, 0.33, 15.0, 0.26, 0.26, 15.0,
+      0.36, 0.36, 15.0, 0.34, 0.34, 15.0, 0.3, 0.3, 15.0, 0.33, 0.33, 15.0, 0.39,
+      0.39, 15.0, 0.27, 0.27, 15.0, 0.24, 0.24, 15.0, 0.24, 0.24, 15.0, 0.35, 0.35,
+      15.0, 0.25, 0.25, 15.0, 0.25, 0.25, 15.0, 0.34, 0.34, 15.0, 0.31, 0.31, 15.0,
+      0.22, 0.22, 15.0]
+    position_obst_vec: [11.518814380851236, 0.3972447510800958, 1.5, 13.485264175084492,
+      0.4815082727276796, 1.5, 11.646085462167264, 2.3371118393928345, 1.5, 7.636436930055525,
+      1.4661922251559345, 1.5, 7.440819410706044, 3.378556438863402, 1.5, 6.373347503657586,
+      1.6021182220044174, 1.5, 13.387133683053312, 1.4984798828138348, 1.5, 1.4533468946002692,
+      1.495666361780601, 1.5, 6.490076820655995, 3.483849039481146, 1.5, 7.5482182386334085,
+      2.663180888680723, 1.5, 0.41716491452062865, 3.381657320329119, 1.5, 4.590158179865346,
+      3.4934794882228295, 1.5, 10.405545949834643, 3.4614797218766586, 1.5, 3.4487325380656046,
+      0.3952968563745818, 1.5, 12.63045178330405, 0.5604555805617544, 1.5, 5.524754386398831,
+      3.4895609980075175, 1.5, 8.534887832134586, 1.6071241312585227, 1.5, 10.455931290083846,
+      0.5305833156452326, 1.5, 12.619195472540802, 1.6113669242862674, 1.5, 7.517383867565137,
+      0.5514342416396303, 1.5, 10.538720095886347, 2.4306128576672443, 1.5, 2.3973738598219034,
+      2.3244065847257707, 1.5, 0.5068000586685093, 2.5711217474863934, 1.5, 8.39629939156124,
+      3.5029769754745006, 1.5, 3.379649169837454, 2.44256276165713, 1.5, 9.445306736192434,
+      0.6338284234619698, 1.5, 2.3985043938173227, 3.428264558215705, 1.5, 5.395121165970302,
+      1.5917164966786133, 1.5, 0.497262977889811, 1.6003820875531773, 1.5, 4.609514054775692,
+      1.4745646445712541, 1.5, 8.38377454066558, 2.5797169018621102, 1.5, 12.615187311156712,
+      3.4787155037337296, 1.5, 6.367608501216816, 0.3951715762152306, 1.5, 0.5128308977724805,
+      0.5542612261599416, 1.5, 9.545476266018603, 1.4500160680466188, 1.5, 2.5044947369619397,
+      0.5689187600991228, 1.5, 2.4852691511449114, 1.5483127198098185, 1.5, 12.572829967180002,
+      2.5261403088584258, 1.5, 9.43672104892262, 3.4021871662483356, 1.5, 13.333538589159998,
+      3.565786621964698, 1.5, 5.638784201714767, 2.5918938136746226, 1.5, 9.448562538064474,
+      2.4366869123890105, 1.5, 11.504323478636476, 1.4561366401353384, 1.5, 4.411785098878665,
+      2.3501139891438054, 1.5]
+    env_pc_topic: "environment_poincloud" # topic on which to publish the env pointcloud
+    env_vg_topic: "environment_voxel_grid" # topic on which to publish the env voxel grid 
+    env_pc_frame: "world" # origin frame of the published poinctloud
+    get_grid_service_name: "get_voxel_grid" # name of the service to get the voxel grid of each agent
+
+    save_obstacles: true # if true, save the obstacle position in pos_obs.csv as well as the pointcloud in a file
+    publish_period: 0.2 # publishing period of the voxel grid

@@ -12,8 +12,8 @@ def generate_launch_description():
         get_package_share_directory('multi_agent_planner'),
         'config',
         # 'agent_default_config.yaml'
-        # 'agent_agile_config.yaml'
         'agent_crazyflie_config.yaml'
+        # 'agent_agile_config.yaml'
     )
     config_mapper = os.path.join(
         get_package_share_directory('mapping_util'),
@@ -22,20 +22,20 @@ def generate_launch_description():
     )
 
     # define params
-    n_rob = 10 
-    dist_between_rob = 2.01
-    x_pos = 0
-    z_pos = 0 
-    dist_start_goal = 96.01 
-    voxel_grid_range = [20.0, 20.0, 12.0]
+    n_rob = 8
+    dist_between_rob = 0.25
+    x_pos = -1.0
+    z_pos = 0.5
+    dist_start_goal = 15.0
+    voxel_grid_range = [2.0, 2.0, 0.5]
     use_mapping_util = True
     free_grid = False
-    save_stats = False
+    save_stats = True
 
     # calculate equidistant start and goal positions on the same line
     start_positions = []
     goal_positions = []
-    start_positions.append((x_pos,  5.0, z_pos, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0))
+    start_positions.append((x_pos, 1.0, z_pos, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0))
     goal_positions.append((x_pos + dist_start_goal, 5.0, z_pos))
     for i in range(n_rob-1):
         y = start_positions[0][1] + (i+1)*dist_between_rob

@@ -1,21 +1,39 @@
 env_builder_node: 
   ros__parameters:
-    origin_grid: [0.0, 0.0, -8.0] # origin of the voxel grid
-    dimension_grid: [40.0, 40.0, 20.0] # dimensions in meters
-    vox_size: 0.3 # voxel size of the grid
-    free_grid: true # if true the grid is initialized to free instead of unknown
-    multi_obst_size: false # if false, use size_obst as a common size for all obstacles; otherwise use size_obst_multi to define the size of each obstacle
-    multi_obst_position: false # if false, generate positions randomly using normal distribution, if true use position_obst_multi to define the position of each obstacle
-    range_obst: [30.0, 30.0, 0.0] # area on the map where to generate obstacles, always positive numbers to move it around, use the origin_obst variable
-    origin_obst: [6.5, 6.5, 0.0] # origin of the area where we generate the obstacles
+    origin_grid: [0.0, 0.0, 0.0] # origin of the voxel grid
+    dimension_grid: [180.0, 60.0, 20.0] # dimensions in meters
+    vox_size: 0.1 # voxel size of the grid
+    free_grid: false # if true the grid is initialized to free instead of unknown
+    multi_obst_size: true # if false, use size_obst as a common size for all obstacles; otherwise use size_obst_multi to define the size of each obstacle
+    multi_obst_position: true # if false, generate positions randomly using normal distribution, if true use position_obst_multi to define the position of each obstacle
+    range_obst: [140.0, 40.0, 0.0] # area on the map where to generate obstacles, always positive numbers to move it around, use the origin_obst variable
+    origin_obst: [0.0, 0.0, 0.0] # origin of the area where we generate the obstacles
     size_obst: [0.1, 0.1, 10.0] # height x width x length
     rand_seed: 10 #seed for the random generation of the obstacles
     n_obst: 180 # 360, 315, 270, 225, 180, 135, 90, number of obstacles (only used if we want to use random generation, otherwise the number of obstacles is inferred from position_obst_vec)
     rand_seed: 13 #seed for the random generation of the obstacles
-    size_obst_vec: [0.5, 2.2, 5.0, 0.5, 2.2, 5.0] # x,y,z size of each obstacle concatenated
-    position_obst_vec: [0.0, 3.0, 0.0, 0.0, 6.0, 0.0] # x,y,z position of each obstacle concatenated
-
-
+    size_obst_vec: [0.36, 0.36, 15.0, 0.28, 0.28, 15.0, 0.27, 0.27, 15.0, 0.32, 0.32,
+      15.0, 0.3, 0.3, 15.0, 0.24, 0.24, 15.0, 0.35, 0.35, 15.0, 0.26, 0.26, 15.0,
+      0.26, 0.26, 15.0, 0.35, 0.35, 15.0, 0.35, 0.35, 15.0, 0.28, 0.28, 15.0, 0.35,
+      0.35, 15.0, 0.24, 0.24, 15.0, 0.27, 0.27, 15.0, 0.36, 0.36, 15.0, 0.28, 0.28,
+      15.0, 0.25, 0.25, 15.0, 0.38, 0.38, 15.0, 0.28, 0.28, 15.0, 0.4, 0.4, 15.0,
+      0.23, 0.23, 15.0, 0.31, 0.31, 15.0, 0.22, 0.22, 15.0, 0.34, 0.34, 15.0, 0.3,
+      0.3, 15.0, 0.25, 0.25, 15.0, 0.3, 0.3, 15.0]
+    position_obst_vec: [8.957496582121609, 6.53489897166291, 3.75, 16.434468841903104,
+      6.584983456487654, 3.75, 28.813160350377117, 8.59078221416871, 3.75, 13.82078915588278,
+      3.553367859557218, 3.75, 18.53839087837156, 0.9678772558959975, 3.75, 5.891809457802375,
+      3.3832768386007483, 3.75, 1.3125709523098217, 8.658589727894261, 3.75, 11.398686993954787,
+      4.042276129557453, 3.75, 20.989053033887455, 5.837821750538095, 3.75, 33.571309477393015,
+      8.892639281584579, 3.75, 13.661536603281355, 6.183087322022741, 3.75, 28.86102887002169,
+      3.4648508779562013, 3.75, 23.55210616721171, 8.7757182461919, 3.75, 29.0715615799383,
+      0.9075629107604821, 3.75, 8.712000800495382, 3.6104369480625973, 3.75, 8.683619939809963,
+      9.02494128334726, 3.75, 21.202077104663502, 3.93586138083411, 3.75, 13.597659661050807,
+      1.5197751935803843, 3.75, 3.834074856094287, 1.1694485325906916, 3.75, 3.55308737786193,
+      3.641168390845941, 3.75, 26.00156420752011, 8.554790428461278, 3.75, 19.012629518748398,
+      5.988556087565064, 3.75, 33.58258351078186, 6.299683048972393, 3.75, 8.884351392822104,
+      0.8414847409489157, 3.75, 23.772411064653163, 1.3220469929346472, 3.75, 16.489611786101857,
+      3.7054235343916764, 3.75, 28.981742336198444, 6.096251128827577, 3.75, 31.21749745978732,
+      6.015020723302316, 3.75]
     env_pc_topic: "environment_poincloud" # topic on which to publish the env pointcloud
     env_vg_topic: "environment_voxel_grid" # topic on which to publish the env voxel grid 
     env_pc_frame: "world" # origin frame of the published poinctloud
