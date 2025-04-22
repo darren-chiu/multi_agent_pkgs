@@ -1,9 +1,7 @@
 from launch import LaunchDescription
 from launch_ros.actions import Node
 import os
-import math
 from ament_index_python.packages import get_package_share_directory
-import pickle
 
 def generate_launch_description():
     # get config file
@@ -11,9 +9,7 @@ def generate_launch_description():
     config = os.path.join(
         get_package_share_directory('multi_agent_planner'),
         'config',
-        # 'agent_default_config.yaml'
         'agent_crazyflie_config.yaml'
-        # 'agent_agile_config.yaml'
     )
     config_mapper = os.path.join(
         get_package_share_directory('mapping_util'),
@@ -22,31 +18,50 @@ def generate_launch_description():
     )
 
     # define params
-    n_rob = 8
+    # room_x = 14.0
+    # room_y = 6.0
+    # # calculate equidistant start and goal positions on the same line
+    # init_line = -5.5 + (room_x/2.0)
+    # start_positions = [[init_line, 1.75 + (room_y/2.0), 0.5],
+    #                     [init_line, 1.25 + (room_y/2.0), 0.5],
+    #                     [init_line, 0.75 + (room_y/2.0), 0.5],
+    #                     [init_line, 0.25 + (room_y/2.0), 0.5],
+    #                     [init_line, -0.25 + (room_y/2.0), 0.5],
+    #                     [init_line, -0.75 + (room_y/2.0), 0.5],
+    #                     [init_line, -1.25 + (room_y/2.0), 0.5],
+    #                     [init_line, -1.75 + (room_y/2.0), 0.5]]
+    # goal_positions = start_positions.copy()
+    # goal_positions += 11.5
+    n_rob = 10
     dist_between_rob = 0.5
-    x_pos = -1.0
-    z_pos = 0.5
-    dist_start_goal = 25.0
+    x_pos = 0
+    z_pos = 0 
+    dist_start_goal = 11.5
     voxel_grid_range = [20.0, 20.0, 0.5]
     use_mapping_util = True
     free_grid = True
     save_stats = True
-
     # calculate equidistant start and goal positions on the same line
     start_positions = []
     goal_positions = []
-    start_positions.append((x_pos, 0.5, z_pos, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0))
+    start_positions.append((x_pos, 0.0, z_pos, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0))
     goal_positions.append((x_pos + dist_start_goal, 5.0, z_pos))
     for i in range(n_rob-1):
         y = start_positions[0][1] + (i+1)*dist_between_rob
         start_positions.append((x_pos,  y, z_pos, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0))
         goal_positions.append((x_pos + dist_start_goal, y, z_pos))
+    # start_positions.append((x_pos, 0.5, z_pos, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0))
+    # goal_positions.append((x_pos + dist_start_goal, 5.0, z_pos))
+    # for i in range(n_rob-1):
+    #     y = start_positions[0][1] + (i+1)*dist_between_rob
+    #     start_positions.append((x_pos,  y, z_pos, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0))
+    #     goal_positions.append((x_pos + dist_start_goal, y, z_pos))
     
-    with open("src/multi_agent_pkgs/multi_agent_planner/launch/run_6_goals", "rb") as fp:   # Unpickling
-        goal_positions = pickle.load(fp)
+    # with open("src/multi_agent_pkgs/multi_agent_planner/launch/run_6_goals", "rb") as fp:   # Unpickling
+    #     goal_positions = pickle.load(fp)
         
-    with open("src/multi_agent_pkgs/multi_agent_planner/launch/run_6_start", "rb") as fp:   # Unpickling
-        start_positions = pickle.load(fp)
+    # with open("src/multi_agent_pkgs/multi_agent_planner/launch/run_6_start", "rb") as fp:   # Unpickling
+    #     start_positions = pickle.load(fp)
         
     print(start_positions)
 
