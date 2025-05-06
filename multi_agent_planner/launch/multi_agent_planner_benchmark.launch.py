@@ -32,7 +32,7 @@ def generate_launch_description():
     #                     [init_line, -1.75 + (room_y/2.0), 0.5]]
     # goal_positions = start_positions.copy()
     # goal_positions += 11.5
-    n_rob = 4
+    n_rob = 3
     dist_between_rob = 0.5
     x_pos = 0
     z_pos = 2.5
