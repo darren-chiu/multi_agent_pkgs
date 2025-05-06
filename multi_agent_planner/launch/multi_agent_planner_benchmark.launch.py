@@ -32,15 +32,15 @@ def generate_launch_description():
     #                     [init_line, -1.75 + (room_y/2.0), 0.5]]
     # goal_positions = start_positions.copy()
     # goal_positions += 11.5
-    n_rob = 8
+    n_rob = 4
     dist_between_rob = 0.5
     x_pos = 0
-    z_pos = 0 
+    z_pos = 2.5
     dist_start_goal = 12.0
     voxel_grid_range = [20.0, 20.0, 0.5]
     use_mapping_util = True
     free_grid = True
-    save_stats = False
+    save_stats = True
     # calculate equidistant start and goal positions on the same line
     start_positions = []
     goal_positions = []
