@@ -16,36 +16,34 @@ def generate_launch_description():
         'config',
         'map_builder_default_config.yaml'
     )
+    
+    stretch_factor = 5.0
 
     # define params
-    # room_x = 14.0
-    # room_y = 6.0
-    # # calculate equidistant start and goal positions on the same line
-    # init_line = -5.5 + (room_x/2.0)
-    # start_positions = [[init_line, 1.75 + (room_y/2.0), 0.5],
-    #                     [init_line, 1.25 + (room_y/2.0), 0.5],
-    #                     [init_line, 0.75 + (room_y/2.0), 0.5],
-    #                     [init_line, 0.25 + (room_y/2.0), 0.5],
-    #                     [init_line, -0.25 + (room_y/2.0), 0.5],
-    #                     [init_line, -0.75 + (room_y/2.0), 0.5],
-    #                     [init_line, -1.25 + (room_y/2.0), 0.5],
-    #                     [init_line, -1.75 + (room_y/2.0), 0.5]]
-    # goal_positions = start_positions.copy()
-    # goal_positions += 11.5
-    n_rob = 3
-    dist_between_rob = 0.5
-    x_pos = 0
+    room_x = 14.0 * stretch_factor
+    room_y = 6.0 * stretch_factor
+
+    n_rob = 8
+    dist_between_rob = 0.5 * stretch_factor
+    
+    x_pos_rl = -5.5 * stretch_factor# 0.0
+    x_pos = (x_pos_rl + room_x / 2.0)
+    
+    y_pos_rl = -1.75 * stretch_factor
+    y_pos = (y_pos_rl + room_y / 2.0)
+    
     z_pos = 2.5
-    dist_start_goal = 12.0
+    dist_start_goal = 12.0 * stretch_factor
     voxel_grid_range = [20.0, 20.0, 0.5]
     use_mapping_util = True
     free_grid = True
-    save_stats = True
+    save_stats = False
     # calculate equidistant start and goal positions on the same line
     start_positions = []
     goal_positions = []
-    start_positions.append((x_pos, -1.75 + 3.0, z_pos, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0))
-    goal_positions.append((x_pos + dist_start_goal, 5.0, z_pos))
+    # start_positions.append((x_pos, -1.75 + 3.0, z_pos, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0))
+    start_positions.append((x_pos, y_pos, z_pos, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0))
+    goal_positions.append((x_pos + dist_start_goal, y_pos, z_pos))
     for i in range(n_rob-1):
         y = start_positions[0][1] + (i+1)*dist_between_rob
         start_positions.append((x_pos,  y, z_pos, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0))
